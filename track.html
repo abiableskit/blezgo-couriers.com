@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Track Package - Blezgo Couriers</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">Blezgo Couriers</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="track.html">Track</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="contact-form-container">
+    <form class="contact-form" id="track-form">
+      <h2>Track Your Package</h2>
+      <label for="trackingId">Enter Tracking ID</label>
+      <input type="text" id="trackingId" placeholder="e.g. BLEZ123456789" required />
+      <button type="submit" class="btn">Track</button>
+    </form>
+
+    <div id="tracking-result" style="margin-top:20px;"></div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Blezgo Couriers. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById('track-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const id = document.getElementById('trackingId').value.trim();
+      const result = document.getElementById('tracking-result');
+
+      if (id === 'BLEZ123456789') {
+        result.innerHTML = `
+          <div class="dashboard-card">
+            <h2>Status: In Transit</h2>
+            <p>Location: Kampala Dispatch Center</p>
+            <p>Expected Delivery: April 20, 2025</p>
+          </div>
+        `;
+      } else {
+        result.innerHTML = `<p style="color:red;">Tracking ID not found. Please try again.</p>`;
+      }
+    });
+  </script>
+  <!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js"></script>
+<script>
+  const firebaseConfig = {
+  apiKey: "AIzaSyB0oggYEpDnf71CzUwVLHQ9bqPn5zWfcSw",
+  authDomain: "blezgocourierswebsite.firebaseapp.com",
+  projectId: "blezgocourierswebsite",
+  storageBucket: "blezgocourierswebsite.firebasestorage.app",
+  messagingSenderId: "529128917052",
+  appId: "1:529128917052:web:727139ef09e1dc6e2edb39"
+};
+
+  const app = firebase.initializeApp(firebaseConfig);
+  const database = firebase.database(app);
+  const dbRef = firebase.database().ref("packages");
+
+  document.getElementById('track-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const id = document.getElementById('trackingId').value.trim();
+    const result = document.getElementById('tracking-result');
+
+    dbRef.child(id).get().then((snapshot) => {
+      if (snapshot.exists()) {
+        const data = snapshot.val();
+        result.innerHTML = `
+          <div class="dashboard-card">
+            <h2>Status: ${data.status}</h2>
+            <p>Location: ${data.location}</p>
+            <p>Expected Delivery: ${data.eta}</p>
+          </div>
+        `;
+      } else {
+        result.innerHTML = `<p style="color:red;">Tracking ID not found. Please try again.</p>`;
+      }
+    });
+  });
+</script>
+</body>
+</html>
