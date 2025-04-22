@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - Blezgo Couriers</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">Blezgo Couriers</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+    </ul>
+  </nav>
+
+  <div class="contact-form-container">
+    <form class="contact-form" id="login-form">
+      <h2>Login</h2>
+      
+      <label for="username">Username</label>
+      <input type="text" id="username" placeholder="Enter username" required />
+      
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter password" required />
+      
+      <button type="submit" class="btn">Login</button>
+
+      <p id="login-message" style="margin-top: 1rem;"></p>
+    </form>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Blezgo Couriers. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const loginForm = document.getElementById("login-form");
+    const loginMessage = document.getElementById("login-message");
+
+    loginForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value;
+
+      if (username === "admin" && password === "admin123") {
+        loginMessage.style.color = "green";
+        loginMessage.textContent = "Login successful! Redirecting...";
+        setTimeout(() => {
+          window.location.href = "dashboard.html";
+        }, 1500);
+      } else {
+        loginMessage.style.color = "red";
+        loginMessage.textContent = "Invalid username or password.";
+      }
+    });
+  </script>
+</body>
+</html>
