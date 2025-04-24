@@ -5,50 +5,74 @@
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 />
+  <!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- Custom CSS -->
+<link rel="stylesheet" href="style.css">
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact Us - Blezgo Couriers</title>
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <nav class="navbar">
-    <div class="logo">Blezgo Couriers</div>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="track.html">Track</a></li>
-      <li><a href="dashboard.html">Dashboard</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Blezgo Couriers</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="track.html">Track</a></li>
+          <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
   </nav>
 
-  <div class="contact-form-container">
-    <form class="contact-form">
-      <h2>Contact Us</h2>
-      <label for="name">Full Name</label>
-      <input type="text" id="name" required />
-
-      <label for="email">Email</label>
-      <input type="email" id="email" required />
-
-      <label for="message">Message</label>
-      <textarea id="message" rows="5" required></textarea>
-
-      <button type="submit" class="btn">Send Message</button>
-    </form>
+  <!-- Contact Form Section -->
+  <div class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <h2 class="mb-4 text-center">Contact Us</h2>
+        <form>
+          <div class="mb-3">
+            <label for="name" class="form-label">Full Name</label>
+            <input type="text" id="name" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" id="email" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <textarea id="message" rows="5" class="form-control" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+      </div>
+    </div>
   </div>
-<div style="text-align: bottom right; margin-top: 2rem;">
-  <a
-    href="https://wa.me/+26777506107"
-    target="_blank"
-    class="btn"
-    style="background-color: #25D366; text-decoration: none;"
-    ></a>
-  <i class="fab fa-whatsapp"></i> Chat with us on WhatsApp
-</a>
-  
-</div>
-  <footer>
-    <p>&copy; 2025 Blezgo Couriers. All rights reserved.</p>
+
+  <!-- WhatsApp Chat Button -->
+  <div class="text-end me-4 mb-4">
+    <a href="https://wa.me/+26777506107" target="_blank" class="btn btn-success">
+      <i class="fab fa-whatsapp"></i> Chat with us on WhatsApp
+    </a>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center py-3">
+    <p class="mb-0">&copy; 2025 Blezgo Couriers. All rights reserved.</p>
   </footer>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
