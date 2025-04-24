@@ -2,43 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Get a Quote - Blezgo Couriers</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-  <style>
-    body {
-      background-color: #f4f7f9;
-      font-family: 'Poppins', sans-serif;
-    }
-    .navbar {
-      background-color: #1e2a38;
-    }
-    .navbar .nav-link, .navbar-brand {
-      color: white;
-    }
-    .navbar .nav-link:hover {
-      color: #00bcd4;
-    }
-    .form-container {
-      max-width: 700px;
-      margin: 4rem auto;
-      padding: 2rem;
-      background-color: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-    }
-    footer {
-      background-color: #1e2a38;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-    }
-  </style>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="style.css" rel="stylesheet" />
 </head>
-<body>
+<body class="bg-light text-dark">
 
-  <nav class="navbar navbar-expand-lg">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="index.html">Blezgo Couriers</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -47,127 +18,99 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link active" href="#">Get a Quote</a></li>
+          <li class="nav-item"><a class="nav-link" href="track.html">Track</a></li>
+          <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link active" href="quote.html">Get a Quote</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <div class="container form-container">
-    <h2 class="mb-4 text-center text-primary">Get a Shipping Quote</h2>
-    <form id="quoteForm">
+  <div class="container mt-5 mb-5">
+    <h2 class="text-center mb-4">Shipping Quote Calculator</h2>
+    <form id="quote-form" class="p-4 border rounded bg-white">
       <div class="mb-3">
-        <label for="fullName" class="form-label">Full Name</label>
-        <input type="text" class="form-control" id="fullName" required />
-      </div>
-      <div class="mb-3">
-        <label for="email" class="form-label">Email Address</label>
-        <input type="email" class="form-control" id="email" required />
-      </div>
-      <div class="mb-3">
-        <label for="continent" class="form-label">Destination Continent</label>
+        <label for="continent" class="form-label">Select Continent</label>
         <select class="form-select" id="continent" required>
-          <option value="">Select Continent</option>
+          <option value="">-- Select Continent --</option>
           <option value="Africa">Africa</option>
-          <option value="Asia">Asia</option>
           <option value="Europe">Europe</option>
+          <option value="Asia">Asia</option>
           <option value="North America">North America</option>
           <option value="South America">South America</option>
           <option value="Australia">Australia</option>
         </select>
       </div>
       <div class="mb-3">
-        <label for="country" class="form-label">Destination Country</label>
-        <select class="form-select" id="country" required>
-          <option value="">Select a continent first</option>
-        </select>
-      </div>
-      <div class="mb-3">
-        <label for="shippingType" class="form-label">Shipping Type</label>
-        <select id="shippingType" class="form-select" required>
-          <option value="">Choose shipping type</option>
-          <option value="standard">Standard</option>
-          <option value="express">Express</option>
-          <option value="sameDay">Same Day</option>
-          <option value="freight">Freight (Bulk)</option>
-        </select>
+        <label for="country" class="form-label">Select Country</label>
+        <select class="form-select" id="country" required></select>
       </div>
       <div class="mb-3">
         <label for="weight" class="form-label">Package Weight (kg)</label>
-        <input type="number" class="form-control" id="weight" min="0.1" step="0.1" required />
+        <input type="number" class="form-control" id="weight" required min="0.1" step="0.1" />
       </div>
-      <div class="mb-3">
-        <label for="description" class="form-label">Package Description</label>
-        <textarea class="form-control" id="description" rows="3" required></textarea>
+      <div class="d-grid">
+        <button type="submit" class="btn btn-primary">Calculate Quote</button>
       </div>
-      <div class="mb-3">
-        <label class="form-label">Estimated Cost</label>
-        <p id="estimatedCost" class="text-success fw-bold">Enter all fields to calculate</p>
-      </div>
-      <button type="submit" class="btn btn-primary w-100">Submit Request</button>
     </form>
+
+    <div class="mt-4" id="result" style="display:none;">
+      <h4>Estimated Shipping Cost:</h4>
+      <p id="quote-amount" class="fs-4 fw-semibold text-success"></p>
+    </div>
   </div>
 
-  <footer>
-    <p>&copy; 2025 Blezgo Couriers. All rights reserved.</p>
+  <footer class="bg-dark text-center text-white py-3">
+    &copy; 2025 Blezgo Couriers. All rights reserved.
   </footer>
 
   <script>
-    const countryOptions = {
-      "Africa": ["Nigeria", "South Africa", "Kenya", "Egypt", "Ghana"],
-      "Asia": ["China", "India", "Japan", "UAE", "Indonesia"],
-      "Europe": ["UK", "Germany", "France", "Spain", "Italy"],
-      "North America": ["USA", "Canada", "Mexico", "Cuba", "Jamaica"],
-      "South America": ["Brazil", "Argentina", "Colombia", "Chile", "Peru"],
-      "Australia": ["Australia", "New Zealand", "Fiji", "Papua New Guinea"]
+    const countriesByContinent = {
+      Africa: ["Nigeria", "South Africa", "Egypt", "Kenya", "Botswana"],
+      Europe: ["Germany", "France", "UK", "Spain", "Italy"],
+      Asia: ["China", "Japan", "India", "Indonesia", "Saudi Arabia"],
+      "North America": ["USA", "Canada", "Mexico", "Cuba"],
+      "South America": ["Brazil", "Argentina", "Peru", "Colombia"],
+      Australia: ["Australia", "New Zealand"]
     };
 
-    const baseRates = {
-      "Africa": 20,
-      "Asia": 25,
-      "Europe": 30,
-      "North America": 35,
-      "South America": 28,
-      "Australia": 32
-    };
+    const continentSelect = document.getElementById("continent");
+    const countrySelect = document.getElementById("country");
+    const form = document.getElementById("quote-form");
+    const result = document.getElementById("result");
+    const quoteAmount = document.getElementById("quote-amount");
 
-    const shippingMultipliers = {
-      standard: 1,
-      express: 1.5,
-      sameDay: 2,
-      freight: 2.5
-    };
-
-    document.getElementById('continent').addEventListener('change', function () {
-      const continent = this.value;
-      const countries = countryOptions[continent] || [];
-      const countrySelect = document.getElementById('country');
-      countrySelect.innerHTML = countries.map(c => `<option value="${c}">${c}</option>`).join('');
-      updateCost();
+    continentSelect.addEventListener("change", () => {
+      const continent = continentSelect.value;
+      const countries = countriesByContinent[continent] || [];
+      countrySelect.innerHTML = `<option value="">-- Select Country --</option>`;
+      countries.forEach(country => {
+        countrySelect.innerHTML += `<option value="${country}">${country}</option>`;
+      });
     });
 
-    document.getElementById('quoteForm').addEventListener('input', updateCost);
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const continent = continentSelect.value;
+      const weight = parseFloat(document.getElementById("weight").value);
 
-    function updateCost() {
-      const continent = document.getElementById('continent').value;
-      const shippingType = document.getElementById('shippingType').value;
-      const weight = parseFloat(document.getElementById('weight').value);
-      const costDisplay = document.getElementById('estimatedCost');
+      const baseRates = {
+        Africa: 15,
+        Europe: 20,
+        Asia: 18,
+        "North America": 22,
+        "South America": 17,
+        Australia: 25
+      };
 
-      if (!continent || !shippingType || isNaN(weight)) {
-        costDisplay.textContent = "Enter all fields to calculate";
-        return;
-      }
+      const ratePerKg = baseRates[continent] || 20;
+      const total = (ratePerKg * weight).toFixed(2);
 
-      const base = baseRates[continent] || 0;
-      const perKg = 5;
-      const multiplier = shippingMultipliers[shippingType] || 1;
-
-      const total = ((base + (perKg * weight)) * multiplier).toFixed(2);
-      costDisplay.textContent = `$${total}`;
-    }
+      quoteAmount.textContent = `$${total}`;
+      result.style.display = "block";
+    });
   </script>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
