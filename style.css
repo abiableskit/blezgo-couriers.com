@@ -183,4 +183,9 @@ footer {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Custom styles for the tracking form */
+#track-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
 
