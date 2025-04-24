@@ -1,16 +1,6 @@
-/* Google Font */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-/* Hover Effects */
-.dashboard-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
 
-.btn:hover {
-  background-color: #00796b;
-  color: #e0f7fa;
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -26,43 +16,30 @@ body {
   display: flex;
   flex-direction: column;
 }
-/* Hovering Effect for Links */
-a:hover {
-  text-decoration: underline;
-  color: #00796b;
-}
-/* Navbar */
+
+
 .navbar {
-  background-color: #1e2a38;
-  color: white;
+  background-color: #1e2a38 !important;
   padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
-.logo {
+.navbar .navbar-brand {
+  color: white !important;
   font-size: 1.5rem;
   font-weight: 600;
 }
 
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-}
-
-.nav-links li a {
-  color: white;
-  text-decoration: none;
+.navbar .nav-link {
+  color: white !important;
+  margin-left: 1rem;
   transition: color 0.3s ease;
 }
 
-.nav-links li a:hover {
-  color: #00bcd4;
+.navbar .nav-link:hover {
+  color: #00bcd4 !important;
+  text-decoration: underline;
 }
 
-/* Hero Section */
 .hero {
   flex: 1;
   padding: 4rem 2rem;
@@ -81,7 +58,7 @@ a:hover {
   color: #555;
 }
 
-/* Form Styles */
+
 .contact-form-container {
   flex: 1;
   padding: 3rem 2rem;
@@ -125,7 +102,8 @@ a:hover {
   border-color: #00bcd4;
 }
 
-.btn {
+/* Button Styles */
+.btn-custom {
   display: inline-block;
   margin-top: 1.5rem;
   background-color: #00bcd4;
@@ -138,11 +116,11 @@ a:hover {
   transition: background-color 0.3s ease;
 }
 
-.btn:hover {
+.btn-custom:hover {
   background-color: #0097a7;
+  color: #e0f7fa;
 }
 
-/* Dashboard Cards */
 .dashboard {
   display: flex;
   flex-wrap: wrap;
@@ -159,6 +137,12 @@ a:hover {
   width: 250px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 .dashboard-card h2 {
@@ -172,40 +156,7 @@ a:hover {
   color: #00bcd4;
   font-weight: 600;
 }
-/* Custom styles for the tracking form */
-#track-form {
-  max-width: 600px;
-  margin: 0 auto;
-}
-/* Custom styles for the dashboard cards */
-.card {
-  border-radius: 10px;
-}
 
-.card-title {
-  font-weight: bold;
-}
-
-.card-text {
-  font-size: 2rem;
-}
-/* Custom styles for the contact form */
-form {
-  background-color: #f8f9fa;
-  padding: 2rem;
-  border-radius: 10px;
-}
-
-form h2 {
-  font-weight: bold;
-}
-
-.btn-primary {
-  background-color: #007bff;
-  border-color: #007bff;
-}
-
-/* Footer */
 footer {
   text-align: center;
   background-color: #1e2a38;
@@ -213,5 +164,35 @@ footer {
   padding: 1rem;
   font-size: 0.9rem;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.whatsapp-chat {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25D366;
+  color: white;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: background-color 0.3s ease;
+  z-index: 1000;
+}
+
+.whatsapp-chat:hover {
+  background-color: #1ebe5d;
+  text-decoration: none;
+  color: white;
+}
+
+/* Link Hover Effect */
+a:hover {
+  text-decoration: underline;
+  color: #00796b;
 }
 
