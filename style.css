@@ -38,6 +38,15 @@ body {
   color: #00bcd4 !important;
   text-decoration: underline;
 }
+.navbar .fa-user-circle {
+  font-size: 1.4rem;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+.navbar .fa-user-circle:hover {
+  color: #00bcd4;
+}
 
 .hero {
   flex: 1;
