@@ -78,7 +78,7 @@
       const continent = continentSelect.value;
       const countries = countriesByContinent[continent] || [];
       countrySelect.innerHTML = countries
-        .map(country => `<option value="BWP{country}">P{country}</option>`)
+        .map(country => `<option value="${country}">${country}</option>`)
         .join("");
     });
 
@@ -105,7 +105,7 @@
       };
 
       const estimate = baseRate * continentFactor[continent] * weight;
-      result.textContent = `Estimated shipping cost to P{country}: PP{estimate.toFixed(2)}`;
+      result.textContent = `Estimated shipping cost to ${country}: BWP{estimate.toFixed(2)}`;
     });
   </script>
 
