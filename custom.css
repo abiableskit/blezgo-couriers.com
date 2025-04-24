@@ -1,0 +1,14 @@
+/* Change the primary color */
+.btn-primary {
+  background-color: #ff5733;
+  border-color: #ff5733;
+}
+
+/* Customize navbar */
+.navbar {
+  background-color: #333;
+}
+
+.navbar .nav-link {
+  color: #fff;
+}
