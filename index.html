@@ -1,34 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- In the <head> section -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Blezgo Couriers - Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <nav class="navbar">
-    <div class="logo">Blezgo Couriers</div>
-    <ul class="nav-links">
-      <li><a href="login.html">Login</a></li>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="track.html">Track</a></li>
-      <li><a href="dashboard.html">Dashboard</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Blezgo Couriers</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="track.html">Track</a></li>
+          <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
   </nav>
 
-  <section class="hero">
-    <h1>Fast. Reliable. Everywhere.</h1>
-    <p>We deliver your packages safely and on time. Welcome to Blezgo Couriers.</p>
+  <!-- Hero Section -->
+  <section class="hero text-center py-5 bg-light">
+    <div class="container">
+      <h1 class="display-4">Fast. Reliable. Everywhere.</h1>
+      <p class="lead">We deliver your packages safely and on time. Welcome to Blezgo Couriers.</p>
+    </div>
   </section>
 
-  <footer>
-    <p>&copy; 2025 Blezgo Couriers. All rights reserved.</p>
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center py-3">
+    <p class="mb-0">&copy; 2025 Blezgo Couriers. All rights reserved.</p>
   </footer>
-<!-- Before the closing </body> tag -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
