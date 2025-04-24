@@ -104,9 +104,9 @@
     const quoteForm = document.getElementById('quoteForm');
 
     const countries = {
-      "Africa": ["Nigeria", "South Africa", "Egypt", "Kenya"],
-      "Asia": ["China", "India", "Japan", "Indonesia"],
-      "Europe": ["Germany", "France", "UK", "Italy"],
+      "Africa": ["Nigeria", "South Africa", "Egypt", "Kenya" , "Zimbabwe" , "Algeria" , "Ghana"]
+      "Asia": ["China", "India", "Japan", "Indonesia" , "Singapore" , "Russia"]
+      "Europe": ["Germany", "France", "UK", "Italy" , "Belgium" , "Ireland"]
       "North America": ["USA", "Canada", "Mexico"],
       "South America": ["Brazil", "Argentina", "Colombia"],
       "Oceania": ["Australia", "New Zealand", "Fiji"]
@@ -140,7 +140,7 @@
       const weight = parseFloat(weightInput.value);
       if (continent && weight > 0) {
         const cost = (baseRates[continent] * weight).toFixed(2);
-        estimateInput.value = `$${cost}`;
+        estimateInput.value = `PP{cost}`;
       } else {
         estimateInput.value = "Invalid input";
       }
