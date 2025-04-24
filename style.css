@@ -188,4 +188,16 @@ footer {
   max-width: 600px;
   margin: 0 auto;
 }
+/* Custom styles for the dashboard cards */
+.card {
+  border-radius: 10px;
+}
+
+.card-title {
+  font-weight: bold;
+}
+
+.card-text {
+  font-size: 2rem;
+}
 
