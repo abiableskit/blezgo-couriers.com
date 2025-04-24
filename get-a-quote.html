@@ -60,54 +60,64 @@
   </footer>
 
   <script>
-    const countriesByContinent = {
-      "Africa": ["Nigeria", "South Africa", "Kenya", "Egypt", "Ghana", "Ethiopia", "Algeria", "Morocco", "Tanzania", "Botswana"],
-      "Asia": ["China", "India", "Japan", "Indonesia", "South Korea", "Philippines", "Thailand", "Malaysia", "Vietnam", "Bangladesh"],
-      "Europe": ["United Kingdom", "Germany", "France", "Italy", "Spain", "Netherlands", "Poland", "Sweden", "Norway", "Greece"],
-      "North America": ["United States", "Canada", "Mexico", "Cuba", "Jamaica", "Honduras", "Panama", "Guatemala", "Costa Rica", "El Salvador"],
-      "South America": ["Brazil", "Argentina", "Colombia", "Chile", "Peru", "Venezuela", "Ecuador", "Bolivia", "Paraguay", "Uruguay"],
-      "Oceania": ["Australia", "New Zealand", "Fiji", "Papua New Guinea", "Samoa", "Tonga", "Vanuatu", "Kiribati", "Micronesia", "Palau"]
-    };
+  const continentSelect = document.getElementById("continent");
+  const countrySelect = document.getElementById("country");
+  const form = document.getElementById("quote-form");
+  const result = document.getElementById("quote-result");
 
-    const continentSelect = document.getElementById("continent");
-    const countrySelect = document.getElementById("country");
-    const form = document.getElementById("quote-form");
-    const result = document.getElementById("quote-result");
+  const countriesByContinent = {
+    "Africa": ["Botswana", "South Africa", "Kenya", "Nigeria", "Egypt", "Ghana", "Morocco", "Tanzania", "Ethiopia", "Algeria"],
+    "Asia": ["China", "India", "Japan", "South Korea", "Indonesia", "Thailand", "Philippines", "Vietnam", "Malaysia", "Pakistan"],
+    "Europe": ["Germany", "France", "UK", "Italy", "Spain", "Netherlands", "Poland", "Sweden", "Switzerland", "Norway"],
+    "North America": ["USA", "Canada", "Mexico", "Cuba", "Jamaica", "Panama", "Dominican Republic", "Haiti", "Trinidad & Tobago", "Guatemala"],
+    "South America": ["Brazil", "Argentina", "Chile", "Colombia", "Peru", "Venezuela", "Ecuador", "Bolivia", "Uruguay", "Paraguay"],
+    "Oceania": ["Australia", "New Zealand", "Fiji", "Papua New Guinea", "Samoa", "Tonga", "Micronesia", "Vanuatu", "Kiribati", "Palau"]
+  };
 
-    continentSelect.addEventListener("change", () => {
-      const continent = continentSelect.value;
-      const countries = countriesByContinent[continent] || [];
-      countrySelect.innerHTML = countries
-        .map(country => `<option value="${country}">${country}</option>`)
-        .join("");
+  const baseRate = 10;
+  const continentFactor = {
+    "Africa": 1200,
+    "Asia": 2500,
+    "Europe": 3800,
+    "North America": 5000,
+    "South America": 4500,
+    "Oceania": 6000
+  };
+
+  continentSelect.addEventListener("change", function () {
+    const selectedContinent = this.value;
+    const countries = countriesByContinent[selectedContinent] || [];
+
+    countrySelect.innerHTML = "<option value=''>Select Country</option>";
+    countries.forEach(country => {
+      const option = document.createElement("option");
+      option.value = country;
+      option.textContent = country;
+      countrySelect.appendChild(option);
     });
+  });
 
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-      const continent = continentSelect.value;
-      const country = countrySelect.value;
-      const weight = parseFloat(document.getElementById("weight").value);
+    const continent = continentSelect.value;
+    const country = countrySelect.value;
+    const weight = parseFloat(document.getElementById("weight").value);
 
-      if (!continent || !country || isNaN(weight)) {
-        result.textContent = "Please fill in all fields correctly.";
-        return;
-      }
+    if (!continent || !country || isNaN(weight) || weight <= 0) {
+      result.innerHTML = `<div class="alert alert-danger">Please enter valid shipping details.</div>`;
+      return;
+    }
 
-      const baseRate = 10;
-      const continentFactor = {
-        "Africa": 1200,
-        "Asia": 2500,
-        "Europe": 3800,
-        "North America": 5000,
-        "South America": 4500,
-        "Oceania": 6000
-      };
+    const estimate = (continentFactor[continent] + baseRate) * weight;
 
-      const estimate = baseRate * continentFactor[continent] * weight;
-      result.textContent = `Estimated shipping cost to ${country}: BWP{estimate.toFixed(2)}`;
-    });
-  </script>
+    result.innerHTML = `
+      <div class="alert alert-success">
+        Estimated shipping cost to <strong>${country}</strong>: 
+        <strong>BWP ${estimate.toLocaleString(undefined, { minimumFractionDigits: 2 })}</strong>
+      </div>`;
+  });
+</script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
