@@ -172,17 +172,6 @@ a:hover {
   color: #00bcd4;
   font-weight: 600;
 }
-
-/* Footer */
-footer {
-  text-align: center;
-  background-color: #1e2a38;
-  color: white;
-  padding: 1rem;
-  font-size: 0.9rem;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
 /* Custom styles for the tracking form */
 #track-form {
   max-width: 600px;
@@ -215,3 +204,14 @@ form h2 {
   background-color: #007bff;
   border-color: #007bff;
 }
+
+/* Footer */
+footer {
+  text-align: center;
+  background-color: #1e2a38;
+  color: white;
+  padding: 1rem;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
