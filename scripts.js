@@ -73,3 +73,27 @@ if (document.getElementById("quote-form")) {
     }
   });
 }
+document.getElementById('track-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  alert("We are now tracking your information");
+
+  const id = document.getElementById('trackingId').value.trim();
+  const result = document.getElementById('tracking-result');
+
+  dbRef.child(id).get().then((snapshot) => {
+    if (snapshot.exists()) {
+      const data = snapshot.val();
+      result.innerHTML = `
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Status: ${data.status}</h5>
+            <p class="card-text">Location: ${data.location}</p>
+            <p class="card-text">Expected Delivery: ${data.eta}</p>
+          </div>
+        </div>
+      `;
+    } else {
+      result.innerHTML = `<div class="alert alert-danger mt-3">Tracking ID not found. Please try again.</div>`;
+    }
+  });
+});
